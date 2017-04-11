@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block page %}
+
+<div class="row">
+	<div class="col-md-1 text-left" style="margin:0">
+		<img class="img-circle img-thumbnail" src="{{creator.picture}}">
+	</div>
+	<div class="col-md-11 text-left">
+		<h2>{{creator.name}}</h2>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-12 text-center">
+		<h1>{{restaurant.name}}</h1>
+	</div>
+</div>
+<br>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+{%for message in messages %}
+<li>{{message}}</li>
+{% endfor %}
+</ul>
+{%endif%}
+{%endwith%}
+
+
+
+
+{% for i in items %}
+<div class="row">
+	<div class="col-md-11">
+		<span style="font-size: 20px; margin-right:20px">{{i.name}}</span><span>{{i.description}}</span>
+	</div>
+	<div class="col-md-1">
+		{{i.price}}
+	</div>
+</div>
+<hr>
+
+{% endfor %}
+
+
+{% endblock %}

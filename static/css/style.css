@@ -1,0 +1,11 @@
+.navbar-default{
+	background-color: #F3F3F3;
+}
+
+.restaurant{
+	padding: 10px 10px;
+}
+
+.restaurant:hover{
+	background-color: #F3F3F3
+}

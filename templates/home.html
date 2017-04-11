@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block page %}
+
+<div class="row">
+	<div class="col-md-12 text-center">
+		<h1>All Restaurants</h1>
+	</div>
+</div>
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+{%for message in messages %}
+<li>{{message}}</li>
+{% endfor %}
+</ul>
+{%endif%}
+{%endwith%}
+
+<div class="row">
+	<div class="col-md-12 text-center">
+		<a href="{{url_for('newRestaurant')}}"><h3>New Restaurant</h3></a>
+	</div>
+</div>
+
+
+{% for r in restaurants %}
+<a href="{{url_for('restaurantMenu', restaurant_id=r.id)}}">
+<div class="row restaurant">
+	<div class="col-md-10">
+		<h4>{{r.name}}</h4>
+	</div>
+	{% if session['username'] == r.user.name %}
+	<div class="col-md-2">
+		<a href="{{url_for('editRestaurant', restaurant_id=r.id)}}">Edit</a>
+		<a href="{{url_for('deleteRestaurant', restaurant_id=r.id)}}">Delete</a>
+	</div>
+	{% endif %}
+</div>
+</a>
+
+{% endfor %}
+
+{% endblock %}

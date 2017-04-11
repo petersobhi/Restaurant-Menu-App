@@ -1,0 +1,15 @@
+<html>
+<body>
+<h1> Delete {{restaurant.name}} </h1>
+
+<form method = 'POST'>
+
+<p>Are you sure want to delete {{restaurant.name}}?</p>
+
+<input type='submit' name='delete' value='Delete'>
+<a href="{{url_for('homePage')}}">Cancel</a>
+
+</form>
+
+</body>
+</html>

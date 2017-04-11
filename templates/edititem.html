@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block page %}
+<html>
+<body>
+<h1> Edit Item </h1>
+
+<form method = 'POST'>
+
+<p>Name:</p>
+<input type='text' size='30' name='name' value="{{item.name}}">
+<p>Description:</p>
+<input type='text' size='30' name='description' value="{{item.description}}">
+<p>Price</p>
+<input type='text' size='30' name='price' value="{{item.price}}">
+<p>Course</p>
+<input type='text' size='30' name='course' value="{{item.course}}">
+
+<input type='submit' value='Edit'>
+
+</form>
+
+</body>
+</html>
+{% endblock %}
