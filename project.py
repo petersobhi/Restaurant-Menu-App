@@ -378,7 +378,8 @@ def newMenuItem(restaurant_id):
         price = request.form['price']
         course = request.form['course']
         new_item = MenuItem(name=name, restaurant_id=restaurant_id,
-                            description=description, price=price, course=course)
+                            description=description, price=price, course=course,
+                            user_id=login_session['user_id'])
         session.add(new_item)
         session.commit()
         flash('new item added')
@@ -443,11 +444,25 @@ def deleteMenuItem(restaurant_id, menu_id):
         return render_template('deleteitem.html', item=item)
 
 
-@app.route('/json')
-def makeJson():
-    items = session.query(MenuItem).all()
-    dic = {'user': 'peter', 'pass': '123'}
-    return jsonify(items=[item.serialize() for item in items])
+@app.route('/restaurant/<int:restaurant_id>/menu/JSON')
+def restaurantMenuJSON(restaurant_id):
+    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
+    items = session.query(MenuItem).filter_by(
+        restaurant_id=restaurant_id).all()
+    return jsonify(MenuItems=[i.serialize for i in items])
+
+
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/JSON')
+def menuItemJSON(restaurant_id, menu_id):
+    item = session.query(MenuItem).filter_by(id=menu_id).one()
+    return jsonify(MenuItem=item.serialize)
+
+
+@app.route('/restaurant/JSON')
+def restaurantsJSON():
+    restaurants = session.query(Restaurant).all()
+    return jsonify(restaurants=[r.serialize for r in restaurants])
+
 
 
 if __name__ == '__main__':

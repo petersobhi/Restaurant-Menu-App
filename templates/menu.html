@@ -2,12 +2,6 @@
 {% block page %}
 
 <div class="row">
-	<div class="col-md-12 text-center">
-		<h1>{{restaurant.name}}</h1>
-	</div>
-</div>
-
-div class="row">
 	<div class="col-md-1 text-left" style="margin:0">
 		<img class="img-circle img-thumbnail" src="{{creator.picture}}">
 	</div>
@@ -22,7 +16,6 @@ div class="row">
 		<h1>{{restaurant.name}}</h1>
 	</div>
 </div>
-<br>
 
 {% with messages = get_flashed_messages() %}
 {% if messages %}
@@ -33,6 +26,13 @@ div class="row">
 </ul>
 {%endif%}
 {%endwith%}
+
+<div class="row">
+	<div class="col-md-12 text-center">
+		<a href="{{url_for('newMenuItem', restaurant_id=restaurant.id)}}"><h3>New Item</h3></a>
+	</div>
+</div>
+<br>
 
 {% for i in items %}
 <div class="row">
