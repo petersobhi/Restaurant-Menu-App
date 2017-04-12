@@ -18,6 +18,7 @@ $ git clone https://github.com/petersobhi/Restaurant-Menu-App.git
 
 ### API Endpints
 currently there are 3 API Endpoints you can use
+
 | Method | Endpoint                                        | Usage                                    | Returns     |
 |:------:|-------------------------------------------------|------------------------------------------|:-----------:|
 | GET    | /restaurant/JSON                                | Get all the restaurants                  | Restaurants |
