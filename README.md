@@ -16,7 +16,7 @@ $ git clone https://github.com/petersobhi/Restaurant-Menu-App.git
 * run the ```project.py```.
 * navigate to ```http://localhost:5000``` to use the web app
 
-### API Endpints
+### API Endpoints
 currently there are 3 API Endpoints you can use
 
 | Method | Endpoint                                        | Usage                                    | Returns     |
